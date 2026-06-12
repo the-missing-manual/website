@@ -103,6 +103,7 @@ export default defineConfig({
               },
             });
           }
+          await posthog.flush();
         } catch (err) {
           try {
             getPostHogClient().captureException(err);
