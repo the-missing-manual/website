@@ -1,16 +1,35 @@
+@import url("https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700&family=Epilogue:ital,wght@0,400;0,500;0,600;1,400&display=swap");
 @import "tailwindcss";
 @import "fumadocs-ui/css/neutral.css";
 @import "fumadocs-ui/css/preset.css";
 @import "fumapress/css/preset.css";
 @import "katex/dist/katex.css";
 
+@theme {
+  --font-sans: "Epilogue", system-ui, sans-serif;
+}
+
 :root {
   --selection-bg: oklch(0.82 0.155 155);
   --selection-fg: oklch(0.112 0.008 155);
+  --color-fd-primary: oklch(0.52 0.155 155);
+}
+
+.dark {
   --color-fd-primary: oklch(0.82 0.155 155);
 }
 
 ::selection {
   background-color: var(--selection-bg);
   color: var(--selection-fg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Bricolage Grotesque", system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }

@@ -1,0 +1,38 @@
+---
+title: Clean Code
+description: What writing readable code means in practice, and why it matters more than you think.
+---
+
+Most of what software engineers do day to day is read code, not write it. You read your own code from last month. You read code your teammate wrote. You read the library your project depends on to figure out why it's behaving strangely.
+
+Code that is easy to read costs less in all of those situations. Clean code is not a style preference. It is a professional discipline.
+
+### What Clean Code Actually Means
+
+A function that does one thing and is named for that thing. A variable name that tells you what it holds without tracing through the logic to figure it out. A file structure that tells you where to look before you search. Comments that explain why something was done, not what the code already says.
+
+**Naming.** If you need a comment to explain what a variable does, the variable is named wrong. If a function name requires you to read the body to understand what it does, the function is named wrong.
+
+**Function size.** A function that does three things is three functions waiting to be separated. Small functions are easier to test, easier to name, and easier to change without breaking something else.
+
+**Comments.** Write them for the why, not the what. The code already says what. A comment that says what `i++` does is noise. A comment that says why you're skipping the first element of a response because the API always returns a sentinel value is information.
+
+**Consistency.** A codebase where every file is formatted the same way, where similar operations follow similar patterns, where names follow the same conventions, is a codebase where you can orient yourself quickly. Inconsistency is cognitive overhead on every read.
+
+### How to Get Better at It
+
+Read code written by people who are better than you. Open source projects are the best available resource for this. Pick a project you use, read a file, understand what it's doing and how it's organized.
+
+After you write something, come back in 48 hours and read it as if you've never seen it. You will find things that confused you immediately. Fix those things.
+
+Code review teaches you more than most courses. If you're in a team, a community, or contributing to open source, the feedback on your code is worth paying attention to even when it's uncomfortable.
+
+<Callout type="info">
+Search for foundational writing on clean code and software craftsmanship. The ideas have been written about extensively. Reading primary sources on this topic is worth more than reading summaries of summaries.
+</Callout>
+
+### Why This Matters for Getting Hired
+
+Interviewers read code during technical interviews. Code that is easy to follow communicates competence. Code that is written fast but is hard to read communicates that the person doesn't think about maintainability.
+
+When you work on your projects, treat them as if someone else will read them. Because someday, someone will.

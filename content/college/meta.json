@@ -1,15 +1,12 @@
 {
-  "title": "Choosing a College",
+  "title": "College",
   "pages": [
     "index",
-    "list",
-    "intake",
-    "culture",
-    "internships",
-    "sub-branches",
-    "placements",
-    "admissions",
-    "location",
-    "links"
+    "before-college",
+    "year-1",
+    "year-2",
+    "year-3",
+    "year-4",
+    "after-college"
   ]
 }

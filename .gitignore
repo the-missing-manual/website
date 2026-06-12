@@ -4,3 +4,11 @@
 dist
 .source
 src/pages.gen.ts
+
+# AI
+.agents/
+.claude/
+.cursor/
+.gemini/
+.kiro/
+.qoder/
