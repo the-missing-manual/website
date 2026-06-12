@@ -1,0 +1,153 @@
+---
+title: Technical Interviews
+description: How to actually get through a technical interview — OAs, live coding, and what to do when you're stuck.
+---
+
+Technical interview advice is overwhelmingly aimed at people who already know everything and just need confidence. This page is aimed at people who are mid-preparation, have real development experience, and are trying to figure out what to prioritize before campus interviews start.
+
+### The Shape of a Campus Internship Process
+
+Most campus internship processes follow the same structure:
+
+1. **Online Assessment (OA):** Two to four coding problems, timed, on a proctored platform. Usually ninety minutes to two hours. This is the filter that eliminates most applicants.
+2. **Technical Round(s):** One or two live interviews. A mix of DSA problems, CS fundamentals, and project discussion. Sometimes includes a system design question for internships at larger companies.
+3. **HR Round:** Behavioral questions, culture fit, compensation discussion. Often the easiest round and the most underestimated one.
+
+Every stage filters for something different. Most people fail at stage one and never see stage two. Most people who make it to stage two fail because they can't articulate their thinking.
+
+### If You Have Development Experience but Limited DSA
+
+This is a common and specific situation. You've built real things. You know how software works in practice. But you've not spent much time on the pattern-recognition layer that interviews test.
+
+The good news: your development experience makes stage two significantly easier if you use it well. The bad news: you still have to clear stage one.
+
+<Mark>Don't treat your development experience as compensation for weak DSA. Treat it as a multiplier for when you get past the OA.</Mark>
+
+Here is how they interact:
+
+**OAs are almost purely DSA.** They don't care about your projects. They test whether you can recognize a pattern, apply an algorithm, and get a working solution within the time limit. This is the part you need to build.
+
+**Technical rounds use both.** You'll get a coding problem, but you'll also be asked to walk through a project. Someone who can solve a medium-level problem and then have a real conversation about database design, API architecture, or why they made a specific tech choice in their project is significantly more interesting to talk to than someone who only drills problems.
+
+**HR and culture rounds favor people who've built real things.** "Tell me about a challenge you faced" is much easier to answer when you've had a production system fail at 11pm and had to debug it.
+
+### What to Actually Prioritize in Third Year
+
+If you're entering third year and have been doing development but little DSA, here is a realistic breakdown:
+
+**Months one and two before campus season starts:**
+
+Focus almost entirely on DSA. The breadth matters more than the depth at this stage. Work through arrays, strings, hashing, two pointers, sliding window, binary search, linked lists, stacks, queues. These categories cover the majority of OA problems you'll see at the internship tier.
+
+Don't go deep into dynamic programming yet unless you have time. Learn to recognize when a problem needs it and understand the base patterns (fibonacci-style recursion to memoization, simple 1D DP). The hard DP problems are mostly not on internship OAs.
+
+**During campus season:**
+
+You'll be appearing for multiple processes at once. Each company's OA may come a week apart. At this point, the goal is to stay sharp, not to learn new material. Reviewing problems you've already done correctly is more valuable than attempting new hard problems right before an OA.
+
+<Callout type="info">
+Keep a short list of the fifteen to twenty problems that gave you the most trouble. Review them the day before an OA. You're not memorizing solutions — you're reminding yourself of patterns you've already internalized.
+</Callout>
+
+**Always:** Work on your ability to talk about your projects. Pick one or two projects where you went deeper than setup and basic features. Know: what problem it solves, what the architecture looks like, one hard technical decision you made and why, one thing that broke and how you fixed it.
+
+### The Online Assessment: How to Actually Do It
+
+OAs are often where prepared people lose marks unnecessarily.
+
+**Read all problems first.** In a two-problem OA, if problem two is easier for you than problem one, do problem two first. Most people don't do this and waste time getting stuck early.
+
+**On a problem you don't know:** Start with the brute force. Write something that works even if it's slow. Many platforms award partial marks for test cases. A slow solution that passes eight out of ten cases is better than no submission.
+
+**On time complexity:** After your solution works, think about whether you can improve it. If you have a nested loop and see a way to use a hash map to eliminate one, do it. Don't optimize before you have a working solution.
+
+**On edge cases:** Arrays of length zero. All elements the same. Negative numbers. The maximum input size. Spend thirty seconds thinking about edge cases before submitting. Most failed test cases are edge cases, not wrong algorithms.
+
+<Mark>An OA is not a test of whether you're smart. It's a test of whether you can produce a working solution under time pressure. These are different skills and the second one can be practiced directly.</Mark>
+
+The way to practice it: simulate OA conditions. Sit down with two problems, set a ninety-minute timer, close everything except the editor and the problem statement, and work. Do this weekly in the months before campus season. It's more useful than solving five problems casually in two hours.
+
+### The Technical Interview: When It's Live
+
+Live coding interviews are different from OAs in a way most people underestimate: the interviewer is watching your process, not just your output.
+
+An interviewer who sees you get to the right answer in silence gets nothing useful about you. An interviewer who hears you think through the problem, catch a mistake, correct it, and ask a clarifying question gets real signal.
+
+Before writing any code:
+
+1. **Repeat the problem back in your own words.** "So if I understand correctly, we need to..." This forces you to actually understand the problem and gives the interviewer a chance to correct a misunderstanding early.
+2. **Ask one clarifying question.** What are the constraints on input size? Can there be duplicates? Is the array sorted? You don't need to ask everything, but asking one sensible question signals that you think about edge cases.
+3. **State your approach before coding.** "My first thought is to use a hash map to track frequencies, which would give us O(n) time. Does that make sense before I write it?" This lets the interviewer redirect you if you're going the wrong way before you've written fifty lines of wrong code.
+
+While coding:
+
+- Talk. Not constantly, but enough that the interviewer knows what you're thinking. "I'm going to initialize this here because..." is fine.
+- Don't freeze silently for more than thirty seconds. If you're stuck, say you're stuck and think out loud. "I know I need to track something about the previous element, I'm figuring out what..."
+- Write clean code even under pressure. Variable names that mean something. No i, j, k unless it's a simple loop index.
+
+<Callout type="warn">
+If you get completely stuck and the interviewer gives you a hint, take it gratefully and move fast. Some students get defensive about hints or keep trying to solve it without them. A candidate who takes a hint well and immediately produces a solution is better than a candidate who refuses help and produces nothing.
+</Callout>
+
+### Your Projects as Interview Material
+
+In a technical round, "walk me through your most interesting project" is almost always on the table. Most people answer this badly.
+
+Bad answer: "I built a web app using React and Node.js with a MongoDB database. It lets users sign in and create posts."
+
+Good answer: "I built a tool that does X for Y reason. The backend is a REST API with Node.js. The interesting part was when I hit a performance problem on the database side — queries were taking too long as data grew. I added an index on the field I was filtering most, which dropped the query time from eight hundred milliseconds to under fifty. I also ended up caching some responses because the data didn't change often."
+
+The difference is specificity and evidence of real thinking. Pick one hard thing about your project and explain it well. If you haven't hit a hard problem in your project, you haven't pushed the project far enough yet.
+
+Questions to prepare answers for:
+
+- Walk me through your architecture. Why did you make those choices?
+- What was the hardest bug you've encountered?
+- What would you change if you rebuilt this from scratch?
+- How does your app handle X going wrong? (X = database failure, slow API, invalid input)
+- What does the data flow look like end to end?
+
+### Core CS Subjects
+
+Beyond DSA and projects, technical rounds at most product companies and several mid-tier companies will ask you about:
+
+- **Operating Systems:** Processes, threads, memory management, deadlocks, scheduling.
+- **DBMS:** SQL queries (joins, subqueries, aggregations), transactions, ACID, normalization, indexing.
+- **Computer Networks:** HTTP vs HTTPS, TCP vs UDP, DNS, what happens when you type a URL. That last one is a classic interview question — know it in detail.
+- **OOP:** Inheritance, polymorphism, encapsulation, abstraction. At minimum be able to explain each with a real example.
+
+You don't need expert depth on all of these before your first OA. You need enough to have a real conversation if they come up in a technical round.
+
+<Callout type="info">
+DBMS and SQL come up surprisingly often in technical interviews. If you've never written a multi-table SQL join before, fix that. It's not hard and it comes up constantly.
+</Callout>
+
+### Managing Multiple Processes Simultaneously
+
+Campus season compresses your time in ways that feel impossible. You might have an OA on Tuesday, a technical round on Thursday, and another OA on Saturday.
+
+A few things that help:
+
+**Research each company briefly before each interview.** Spend fifteen minutes on what the company builds, what the role involves, and what tech stack they use. "Why do you want to work at X?" is a real question and "because you came to our campus" is a real answer that disqualifies real candidates.
+
+**Don't let one failed round affect the next process.** Campus season will include rejections. Some of them will feel arbitrary. A bad OA does not mean the next one will be bad. Reset fast.
+
+**Track your preparation, not just your results.** You can't control who extends an offer. You can control how consistently you practice, how well you review your mistakes, and whether you're improving. Focus on the process.
+
+### The HR Round
+
+Don't skip preparing for this. HR rounds eliminate candidates who have no self-awareness.
+
+Common questions:
+
+- Tell me about yourself.
+- Why do you want to work here?
+- Describe a challenge you faced and how you handled it.
+- Where do you see yourself in five years?
+- Do you have questions for us?
+
+Prepare honest answers. "Tell me about yourself" should be two minutes, not ten. Describe what you've been building, what you're interested in technically, and why you're excited about this role specifically.
+
+<Mark>Always have a question for the interviewer at the end. "What does a typical day look like on the team?" or "What's the most interesting problem the team is currently working on?" — something that signals genuine curiosity.</Mark>
+
+The worst answer to "do you have any questions?" is no.

@@ -1,4 +1,11 @@
 {
   "title": "Learning to Program",
-  "pages": ["index", "dsa", "dev", "clean-code", "language-choice"]
+  "pages": [
+    "index",
+    "dsa",
+    "interviews",
+    "dev",
+    "clean-code",
+    "language-choice"
+  ]
 }
