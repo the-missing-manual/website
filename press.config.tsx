@@ -9,37 +9,65 @@ import { docs } from "./.source/server";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { getPostHogClient } from "./src/lib/posthog";
 import { randomUUID } from "crypto";
+import { readFileSync } from "fs";
+import { createRequire } from "module";
 
 const GREEN = "#4ade80";
 const BG = "#0c0c0c";
 
-async function loadFont(
-  family: string,
-  weight: number,
-): Promise<ArrayBuffer | null> {
-  try {
-    const css = await fetch(
-      `https://fonts.googleapis.com/css2?family=${encodeURIComponent(family)}:wght@${weight}&display=swap`,
-      {
-        headers: {
-          "User-Agent":
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36",
-        },
-      },
-    ).then((r) => r.text());
-    const url = css.match(/url\(([^)]+)\)/)?.[1];
-    if (url) return fetch(url).then((r) => r.arrayBuffer());
-  } catch {
-    // fall back to system fonts
-  }
-  return null;
+const _require = createRequire(import.meta.url);
+
+function loadFontSync(pkg: string, file: string): ArrayBuffer {
+  const path = _require.resolve(`${pkg}/files/${file}`);
+  const buf = readFileSync(path);
+  return buf.buffer.slice(
+    buf.byteOffset,
+    buf.byteOffset + buf.byteLength,
+  ) as ArrayBuffer;
 }
+
+const BASE_URL = "https://the-missing-manual.vercel.app";
+const SITE_NAME = "The Missing Manual";
 
 export default defineConfig({
   content: docs.toFumadocsSource(),
   site: {
-    name: "The Missing Manual",
-    baseUrl: "https://the-missing-manual.vercel.app",
+    name: SITE_NAME,
+    baseUrl: BASE_URL,
+  },
+  meta: {
+    root() {
+      return (
+        <>
+          <meta property="og:site_name" content={SITE_NAME} />
+        </>
+      );
+    },
+    page(page) {
+      const pageUrl = page.url ? new URL(page.url, BASE_URL).href : BASE_URL;
+      const imagePath = (() => {
+        const slugs = page.slugs ?? [];
+        const segments = [...slugs];
+        if (segments.length === 0) segments.push("index.webp");
+        else segments[segments.length - 1] += ".webp";
+        return new URL(segments.join("/"), BASE_URL).href;
+      })();
+
+      return (
+        <>
+          {page.data.description && (
+            <meta name="description" content={page.data.description} />
+          )}
+          <meta property="og:url" content={pageUrl} />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content={page.data.title} />
+          {page.data.description && (
+            <meta name="twitter:description" content={page.data.description} />
+          )}
+          <meta name="twitter:image" content={imagePath} />
+        </>
+      );
+    },
   },
 })
   .layouts({
@@ -98,31 +126,34 @@ export default defineConfig({
     llmsPlugin(),
     takumiPlugin({
       async generate(page) {
-        const [boldFont, regularFont] = await Promise.all([
-          loadFont("Bricolage Grotesque", 700),
-          loadFont("Epilogue", 400),
-        ]);
+        const boldFont = loadFontSync(
+          "@fontsource/bricolage-grotesque",
+          "bricolage-grotesque-latin-700-normal.woff",
+        );
+        const regularFont = loadFontSync(
+          "@fontsource/epilogue",
+          "epilogue-latin-400-normal.woff",
+        );
 
         const fonts: {
           name: string;
           data: ArrayBuffer;
           weight: number;
           style: "normal";
-        }[] = [];
-        if (boldFont)
-          fonts.push({
+        }[] = [
+          {
             name: "Bricolage Grotesque",
             data: boldFont,
             weight: 700,
             style: "normal",
-          });
-        if (regularFont)
-          fonts.push({
+          },
+          {
             name: "Epilogue",
             data: regularFont,
             weight: 400,
             style: "normal",
-          });
+          },
+        ];
 
         const titleLen = page.data.title?.length ?? 0;
         const titleSize = titleLen > 50 ? 58 : titleLen > 35 ? 68 : 80;
@@ -137,9 +168,7 @@ export default defineConfig({
                 flexDirection: "column",
                 background: BG,
                 position: "relative",
-                fontFamily: boldFont
-                  ? "Bricolage Grotesque, system-ui"
-                  : "system-ui, sans-serif",
+                fontFamily: "Bricolage Grotesque, system-ui",
               }}
             >
               {/* Ambient green glow — bottom left */}
@@ -195,9 +224,7 @@ export default defineConfig({
                       fontWeight: 600,
                       letterSpacing: "0.09em",
                       textTransform: "uppercase",
-                      fontFamily: regularFont
-                        ? "Epilogue, system-ui"
-                        : "system-ui, sans-serif",
+                      fontFamily: "Epilogue, system-ui",
                     }}
                   >
                     The Missing Manual
@@ -236,9 +263,7 @@ export default defineConfig({
                         color: "#6b7280",
                         lineHeight: 1.55,
                         maxWidth: 740,
-                        fontFamily: regularFont
-                          ? "Epilogue, system-ui"
-                          : "system-ui, sans-serif",
+                        fontFamily: "Epilogue, system-ui",
                       }}
                     >
                       {page.data.description}
@@ -253,9 +278,7 @@ export default defineConfig({
                     alignItems: "center",
                     paddingTop: 20,
                     borderTop: "1px solid #1c1c1c",
-                    fontFamily: regularFont
-                      ? "Epilogue, system-ui"
-                      : "system-ui, sans-serif",
+                    fontFamily: "Epilogue, system-ui",
                   }}
                 >
                   <span style={{ color: "#3f3f3f", fontSize: 14 }}>
