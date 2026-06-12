@@ -16,6 +16,7 @@
     "fumadocs-ui": "^16.9.3",
     "fumapress": "0.5.5",
     "katex": "^0.17.0",
+    "posthog-node": "^5.36.17",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "react-server-dom-webpack": "^19.2.7",

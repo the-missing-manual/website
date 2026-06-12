@@ -12,3 +12,4 @@ src/pages.gen.ts
 .gemini/
 .kiro/
 .qoder/
+.env

@@ -7,6 +7,8 @@ import { createDocsLayoutPage } from "fumapress/layouts/docs";
 import { Mark } from "./src/components/mark";
 import { docs } from "./.source/server";
 import defaultMdxComponents from "fumadocs-ui/mdx";
+import { getPostHogClient } from "./src/lib/posthog";
+import { randomUUID } from "crypto";
 
 const GREEN = "#4ade80";
 const BG = "#0c0c0c";
@@ -43,6 +45,44 @@ export default defineConfig({
   .layouts({
     page: createDocsLayoutPage({
       async render(page) {
+        try {
+          const posthog = getPostHogClient();
+          const path = page.url ?? "";
+          const segments = path.replace(/^\//, "").split("/");
+          const section = segments[0] ?? "home";
+          const isIndex = segments.length <= 1 || segments[1] === "";
+          const distinctId = randomUUID();
+
+          if (isIndex && section) {
+            posthog.capture({
+              distinctId,
+              event: "docs_section_entered",
+              properties: {
+                section,
+                section_title: page.data?.title ?? section,
+                path,
+              },
+            });
+          } else {
+            posthog.capture({
+              distinctId,
+              event: "docs_page_rendered",
+              properties: {
+                title: page.data?.title ?? "",
+                path,
+                section,
+                description: page.data?.description ?? "",
+              },
+            });
+          }
+        } catch (err) {
+          try {
+            getPostHogClient().captureException(err);
+          } catch {
+            // silently ignore tracking errors
+          }
+        }
+
         return {
           pageProps: {
             tableOfContent: {
