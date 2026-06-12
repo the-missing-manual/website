@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@import "fumadocs-ui/css/neutral.css";
+@import "fumadocs-ui/css/preset.css";
+@import "fumapress/css/preset.css";
+@import "katex/dist/katex.css";
+
+:root {
+  --selection-bg: oklch(0.82 0.155 155);
+  --selection-fg: oklch(0.112 0.008 155);
+  --color-fd-primary: oklch(0.82 0.155 155);
+}
+
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-fg);
+}
