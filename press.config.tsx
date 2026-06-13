@@ -1,16 +1,17 @@
 import { defineConfig } from "fumapress";
+import { createRootLayout } from "fumapress/layouts/root";
 import { fumadocsMdx } from "fumapress/adapters/mdx";
 import { flexsearchPlugin } from "fumapress/plugins/flexsearch";
 import { llmsPlugin } from "fumapress/plugins/llms.txt";
 import { takumiPlugin } from "fumapress/plugins/takumi";
 import { createDocsLayoutPage } from "fumapress/layouts/docs";
 import { Mark } from "./src/components/mark";
+import { PostHogProvider } from "./src/components/posthog-provider";
 import { docs } from "./.source/server";
 import defaultMdxComponents from "fumadocs-ui/mdx";
-import { getPostHogClient } from "./src/lib/posthog";
-import { randomUUID } from "crypto";
 import { readFileSync } from "fs";
 import { createRequire } from "module";
+import type { ReactNode } from "react";
 
 const GREEN = "#4ade80";
 const BG = "#0c0c0c";
@@ -24,6 +25,17 @@ function loadFontSync(pkg: string, file: string): ArrayBuffer {
     buf.byteOffset,
     buf.byteOffset + buf.byteLength,
   ) as ArrayBuffer;
+}
+
+const FumapressRoot = createRootLayout();
+
+function RootLayout({ children, lang }: { children: ReactNode; lang?: string }) {
+  return (
+    <FumapressRoot lang={lang}>
+      <PostHogProvider />
+      {children}
+    </FumapressRoot>
+  );
 }
 
 const BASE_URL = "https://the-missing-manual.vercel.app";
@@ -71,47 +83,9 @@ export default defineConfig({
   },
 })
   .layouts({
+    root: RootLayout,
     page: createDocsLayoutPage({
-      async render(page) {
-        try {
-          const posthog = getPostHogClient();
-          const path = page.url ?? "";
-          const segments = path.replace(/^\//, "").split("/");
-          const section = segments[0] ?? "home";
-          const isIndex = segments.length <= 1 || segments[1] === "";
-          const distinctId = randomUUID();
-
-          if (isIndex && section) {
-            posthog.capture({
-              distinctId,
-              event: "docs_section_entered",
-              properties: {
-                section,
-                section_title: page.data?.title ?? section,
-                path,
-              },
-            });
-          } else {
-            posthog.capture({
-              distinctId,
-              event: "docs_page_rendered",
-              properties: {
-                title: page.data?.title ?? "",
-                path,
-                section,
-                description: page.data?.description ?? "",
-              },
-            });
-          }
-          await posthog.flush();
-        } catch (err) {
-          try {
-            getPostHogClient().captureException(err);
-          } catch {
-            // silently ignore tracking errors
-          }
-        }
-
+      async render() {
         return {
           pageProps: {
             tableOfContent: {
