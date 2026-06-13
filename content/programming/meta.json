@@ -2,10 +2,10 @@
   "title": "Learning to Program",
   "pages": [
     "index",
-    "dsa",
-    "interviews",
+    "language-choice",
     "dev",
     "clean-code",
-    "language-choice"
+    "dsa",
+    "interviews"
   ]
 }
