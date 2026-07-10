@@ -7,11 +7,19 @@ Technical interview advice is overwhelmingly aimed at people who already know ev
 
 ### The Shape of a Campus Internship Process
 
-Most campus internship processes follow the same structure:
+Most campus internship processes follow the same three stages.
 
-1. **Online Assessment (OA):** Two to four coding problems, timed, on a proctored platform. Usually ninety minutes to two hours. This is the filter that eliminates most applicants.
-2. **Technical Round(s):** One or two live interviews. A mix of DSA problems, CS fundamentals, and project discussion. Sometimes includes a system design question for internships at larger companies.
-3. **HR Round:** Behavioral questions, culture fit, compensation discussion. Often the easiest round and the most underestimated one.
+#### Online Assessment (OA)
+
+Two to four coding problems, timed, on a proctored platform. Usually ninety minutes to two hours. This is the filter that eliminates most applicants.
+
+#### Technical Round(s)
+
+One or two live interviews. A mix of DSA problems, CS fundamentals, and project discussion. Sometimes includes a system design question for internships at larger companies.
+
+#### Human Resources (HR) Round
+
+Behavioral questions, culture fit, compensation discussion. Often the easiest round and the most underestimated one.
 
 Every stage filters for something different. Most people fail at stage one and never see stage two. Most people who make it to stage two fail because they can't articulate their thinking.
 
@@ -73,11 +81,13 @@ Live coding interviews are different from OAs in a way most people underestimate
 
 An interviewer who sees you get to the right answer in silence gets nothing useful about you. An interviewer who hears you think through the problem, catch a mistake, correct it, and ask a clarifying question gets real signal.
 
-Before writing any code:
+Before writing any code, do three things in order.
 
-1. **Repeat the problem back in your own words.** "So if I understand correctly, we need to..." This forces you to actually understand the problem and gives the interviewer a chance to correct a misunderstanding early.
-2. **Ask one clarifying question.** What are the constraints on input size? Can there be duplicates? Is the array sorted? You don't need to ask everything, but asking one sensible question signals that you think about edge cases.
-3. **State your approach before coding.** "My first thought is to use a hash map to track frequencies, which would give us O(n) time. Does that make sense before I write it?" This lets the interviewer redirect you if you're going the wrong way before you've written fifty lines of wrong code.
+**Repeat the problem back in your own words.** "So if I understand correctly, we need to..." This forces you to actually understand the problem and gives the interviewer a chance to correct a misunderstanding early.
+
+**Ask one clarifying question.** What are the constraints on input size? Can there be duplicates? Is the array sorted? You don't need to ask everything, but asking one sensible question signals that you think about edge cases.
+
+**State your approach before coding.** "My first thought is to use a hash map to track frequencies, which would give us O(n) time. Does that make sense before I write it?" This lets the interviewer redirect you if you're going the wrong way before you've written fifty lines of wrong code.
 
 While coding:
 
@@ -111,10 +121,10 @@ Questions to prepare answers for:
 
 Beyond DSA and projects, technical rounds at most product companies and several mid-tier companies will ask you about:
 
-- **Operating Systems:** Processes, threads, memory management, deadlocks, scheduling.
-- **DBMS:** SQL queries (joins, subqueries, aggregations), transactions, ACID, normalization, indexing.
+- **Operating Systems (OS):** Processes, threads, memory management, deadlocks, scheduling.
+- **Database Management Systems (DBMS):** SQL queries (joins, subqueries, aggregations), transactions, ACID guarantees, normalization, indexing.
 - **Computer Networks:** HTTP vs HTTPS, TCP vs UDP, DNS, what happens when you type a URL. That last one is a classic interview question — know it in detail.
-- **OOP:** Inheritance, polymorphism, encapsulation, abstraction. At minimum be able to explain each with a real example.
+- **Object-Oriented Programming (OOP):** Inheritance, polymorphism, encapsulation, abstraction. At minimum be able to explain each with a real example.
 
 You don't need expert depth on all of these before your first OA. You need enough to have a real conversation if they come up in a technical round.
 
