@@ -7,7 +7,33 @@ A running log of updates to this guide. Each version corresponds to a meaningful
 
 ---
 
-## v1.3.0 — June 14, 2025
+## v1.4.0 — July 10, 2026
+
+A documentation-quality pass applying the principles from Fuma Nama's [How to Write Good Documentation](https://www.fuma-nama.dev/blog/good-docs) across the whole guide.
+
+### Added
+
+- **Page feedback widget** — every page now ends with a "Was this page helpful?" prompt. Yes/No responses are sent to PostHog, alongside one-click **Suggest an edit** and **Report a problem** links that open the source file or a pre-filled GitHub issue (these links work with no analytics at all). This closes the feedback loop the guide previously had no mechanism for.
+- **FAQ sections** — the Choosing a College, Learning to Program, and Fourth Year pages now answer the questions that come up most often, each cross-linking to the page with the full answer.
+- **Deep dive: CTC inflation** — the Placements & ROI page now explains *why* reported CTC runs 20–40% higher than take-home, with a table breaking down variable pay, bonuses, provident fund, and stock.
+
+### Changed
+
+- **Acronyms spelled out on first mention** — CSE, NAAC, NIRF, NBA, GSoC, CTC, LPA, ROI, IoT, CTF, DSA, OS, DBMS, OOP, HR, GATE, MS, MTech, SOP, GRE, and LOR are now expanded the first time they appear, so a reader landing on any page cold is not left guessing.
+- **Links Worth Bookmarking** is now a table pairing each resource with what to use it for, instead of a run-on list.
+- **Interview process** steps became headings with anchors rather than a numbered list, matching the guidance that meaningful headings beat sequential numbers.
+- **Bare URLs became real hyperlinks** in the Resources section (Stack Overflow, the "Smart Questions" guide, the awesome-lists index).
+
+### Fixed
+
+- **Analytics were silently dead.** The PostHog client read `VITE_`-prefixed environment variables, but Waku only exposes `WAKU_PUBLIC_`-prefixed vars to the browser — so page views (and the new feedback events) were never sent, in dev or production. Switched to `WAKU_PUBLIC_POSTHOG_KEY` / `WAKU_PUBLIC_POSTHOG_HOST`, added a `.env.example`, and made the provider skip initialization when unconfigured instead of calling `init(undefined)` and dropping every event.
+- The feedback widget now resets per page (keyed by route) instead of carrying its answered state across client-side navigation.
+- Replaced mangled em-dashes that rendered as `" , "` across the Choosing a College section (accreditation, placements, sub-branches, admissions, links, and culture pages).
+- Configured the repository so **Edit this page** and view-source links resolve correctly instead of silently doing nothing.
+
+---
+
+## v1.3.0 — June 14, 2026
 
 ### Reorganized
 
@@ -22,7 +48,7 @@ A running log of updates to this guide. Each version corresponds to a meaningful
 
 ---
 
-## v1.2.0 — June 13-14, 2025
+## v1.2.0 — June 13-14, 2026
 
 ### Added
 - **Interview Preparation** page under Learning to Program — covers how to approach technical interviews, what to actually study, how to practice, and common mistakes that hurt candidates who are otherwise capable engineers.
@@ -34,7 +60,7 @@ A running log of updates to this guide. Each version corresponds to a meaningful
 
 ---
 
-## v1.1.0 — June 12, 2025
+## v1.1.0 — June 12, 2026
 
 ### Added
 
@@ -48,7 +74,7 @@ Five sections launched with full content:
 
 ---
 
-## v1.0.0 — June 11, 2025
+## v1.0.0 — June 11, 2026
 
 ### Initial Release
 
