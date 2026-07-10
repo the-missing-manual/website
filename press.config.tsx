@@ -6,10 +6,12 @@ import { llmsPlugin } from "fumapress/plugins/llms.txt";
 import { takumiPlugin } from "fumapress/plugins/takumi";
 import { createDocsLayoutPage } from "fumapress/layouts/docs";
 import { Mark } from "./src/components/mark";
+import { PageFeedback } from "./src/components/page-feedback";
 import { PostHogProvider } from "./src/components/posthog-provider";
 import { docs } from "./.source/server";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { readFileSync } from "fs";
+import { relative, sep } from "node:path";
 import { createRequire } from "module";
 import type { ReactNode } from "react";
 
@@ -40,12 +42,20 @@ function RootLayout({ children, lang }: { children: ReactNode; lang?: string }) 
 
 const BASE_URL = "https://the-missing-manual.vercel.app";
 const SITE_NAME = "The Missing Manual";
+const REPO_URL = "https://github.com/the-missing-manual/website";
+const REPO_BRANCH = "main";
 
 export default defineConfig({
   content: docs.toFumadocsSource(),
   site: {
     name: SITE_NAME,
     baseUrl: BASE_URL,
+    git: {
+      user: "the-missing-manual",
+      repo: "website",
+      branch: REPO_BRANCH,
+      rootDir: process.cwd(),
+    },
   },
   meta: {
     root() {
@@ -85,8 +95,48 @@ export default defineConfig({
   .layouts({
     root: RootLayout,
     page: createDocsLayoutPage({
-      async render() {
+      async render(page) {
+        // Reproduce the default body rendering so we can append a feedback
+        // footer to every page without touching each MDX file.
+        const adapters = (this as unknown as { adapters: unknown[] }).adapters;
+        let body: ReactNode;
+        for (const adapter of adapters) {
+          const render = (adapter as Record<string, unknown>)[
+            "core:render-body"
+          ] as
+            | ((this: unknown, page: unknown) => Promise<ReactNode>)
+            | undefined;
+          const result = await render?.call(this, page);
+          if (result !== undefined) {
+            body = result;
+            break;
+          }
+        }
+
+        const relPath = page.absolutePath
+          ? relative(process.cwd(), page.absolutePath).replaceAll(sep, "/")
+          : undefined;
+        const editUrl = relPath
+          ? `${REPO_URL}/edit/${REPO_BRANCH}/${relPath}`
+          : REPO_URL;
+        const issueTitle = `Docs feedback: ${page.data.title ?? page.url ?? ""}`;
+        const issueBody = `Page: ${page.url ?? relPath ?? ""}\n\nWhat is wrong, missing, or unclear?\n`;
+        const issueUrl = `${REPO_URL}/issues/new?labels=feedback&title=${encodeURIComponent(
+          issueTitle,
+        )}&body=${encodeURIComponent(issueBody)}`;
+
         return {
+          body: (
+            <>
+              {body}
+              <PageFeedback
+                key={page.url}
+                path={page.url}
+                editUrl={editUrl}
+                issueUrl={issueUrl}
+              />
+            </>
+          ),
           pageProps: {
             tableOfContent: {
               style: "clerk",
