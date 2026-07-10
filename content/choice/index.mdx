@@ -4,9 +4,10 @@ description: How to evaluate CSE colleges in India without relying on brochures 
 ---
 
 import { Cards, Card } from 'fumadocs-ui/components/card';
+import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
 import { ListChecksIcon, BuildingsIcon, CodeIcon, BriefcaseIcon, GitBranchIcon, CurrencyInrIcon, PathIcon, MapPinIcon, BookmarkSimpleIcon } from '@phosphor-icons/react/ssr';
 
-CSE is an engineering degree. Engineering means you build things.
+Computer Science and Engineering (CSE) is an engineering degree. Engineering means you build things.
 
 You don't read about how a bridge works and call yourself a civil engineer. You calculate loads, pick materials, draw the structure. CS is identical. You don't read about sorting algorithms. You write them, run them, break them, and figure out why they broke.
 
@@ -39,7 +40,7 @@ The rest of this section covers each filter in detail. Go through them in order.
   <Card icon={<BriefcaseIcon size={18} weight="duotone" />} title="Internship Policies" href="/choice/internships" description="Questions to ask before you join, not after. Attendance rules matter more than most students expect." />
   <Card icon={<GitBranchIcon size={18} weight="duotone" />} title="Sub-Branches" href="/choice/sub-branches" description="CSE AI, Data Science, Cyber Security. When the specialization is real and when it is a renamed program." />
   <Card icon={<CurrencyInrIcon size={18} weight="duotone" />} title="Placements and ROI" href="/choice/placements" description="How to read placement data honestly and calculate whether the fees are worth it." />
-  <Card icon={<PathIcon size={18} weight="duotone" />} title="Admission Paths" href="/choice/admissions" description="Management quota, merit seats, lateral entry, and branch change , what each actually means." />
+  <Card icon={<PathIcon size={18} weight="duotone" />} title="Admission Paths" href="/choice/admissions" description="Management quota, merit seats, lateral entry, and branch change — what each actually means." />
   <Card icon={<MapPinIcon size={18} weight="duotone" />} title="Location" href="/choice/location" description="Why geography still matters even with remote internships and online hackathons." />
   <Card icon={<BookmarkSimpleIcon size={18} weight="duotone" />} title="Links Worth Bookmarking" href="/choice/links" description="NAAC, NIRF, NBA, hackathon platforms, and salary verification — all in one place." />
 </Cards>
@@ -53,3 +54,20 @@ You are not looking for a perfect college. You are trying to avoid a **bad envir
 <Callout type="warn">
 That matters more than where a college sits in a rankings table.
 </Callout>
+
+### Common Questions
+
+<Accordions>
+  <Accordion title="Is a Tier 1 college always the right pick?">
+    If you get into an Indian Institute of Technology (IIT), National Institute of Technology (NIT), or Indian Institute of Information Technology (IIIT), go. The peer group and brand compound. The hard decisions start with private universities, where quality varies widely. See [Building Your List](/choice/list).
+  </Accordion>
+  <Accordion title="A college advertises 90% placement. Is that a good sign?">
+    Not on its own. The percentage hides the denominator (how many students competed) and the type of role (service vs. product). Read [Intake Size](/choice/intake) and [Placements and ROI](/choice/placements) before trusting any headline.
+  </Accordion>
+  <Accordion title="Does a specialized branch like CSE (AI) or Data Science beat core CSE?">
+    Usually the subjects barely differ, and the name exists to expand intake. It matters only when the labs, faculty, and placement track are genuinely separate. See [Sub-Branches](/choice/sub-branches).
+  </Accordion>
+  <Accordion title="How much does the city matter now that internships are remote?">
+    Less than it once did, but proximity to a tech hub still shows up in who you meet and which events you attend. Weigh it only between otherwise comparable options. See [Location](/choice/location).
+  </Accordion>
+</Accordions>
