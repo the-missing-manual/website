@@ -1,4 +1,10 @@
 {
   "title": "Wellbeing",
-  "pages": ["index"]
+  "pages": [
+    "index",
+    "placement-season",
+    "comparison",
+    "burnout",
+    "pressure"
+  ]
 }

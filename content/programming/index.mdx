@@ -5,7 +5,7 @@ description: How to approach DSA, what to actually build, and how to write code 
 
 import { Cards, Card } from 'fumadocs-ui/components/card';
 import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
-import { TreeStructureIcon, CodeIcon, BookOpenIcon, TranslateIcon, ChatsCircleIcon } from '@phosphor-icons/react/ssr';
+import { TreeStructureIcon, CodeIcon, BookOpenIcon, TranslateIcon, ChatsCircleIcon, GitBranchIcon } from '@phosphor-icons/react/ssr';
 
 Most advice about learning to program is either too abstract or too specific. "Just build things" tells you nothing when you don't know what to build. "Learn X first" answers the wrong question.
 
@@ -39,6 +39,12 @@ This guide does not recommend specific courses, platforms, or tools. It does not
     description="What writing readable, maintainable code means in practice and why it matters professionally."
   />
   <Card
+    icon={<GitBranchIcon size={18} weight="duotone" />}
+    title="Version Control"
+    href="/programming/git"
+    description="Git and GitHub are assumed at every job and taught at almost none. What to learn, and the mistakes that bite students."
+  />
+  <Card
     icon={<TreeStructureIcon size={18} weight="duotone" />}
     title="DSA"
     href="/programming/dsa"
@@ -66,5 +72,11 @@ This guide does not recommend specific courses, platforms, or tools. It does not
   </Accordion>
   <Accordion title="I have projects but weak DSA. Am I in trouble?">
     No — your build experience is a multiplier once you clear the Online Assessment, which is almost pure DSA. Close the DSA gap and lean on projects in the live rounds. See [Technical Interviews](/programming/interviews).
+  </Accordion>
+  <Accordion title="Do I need to know git before my first job?">
+    Yes, and learning it on a small solo project is far easier than learning it under pressure on a team. Get the baseline down early. See [Version Control](/programming/git).
+  </Accordion>
+  <Accordion title="Where do I find good resources for any of this?">
+    A short, curated list of super-credible, mostly-free ones lives on the [Learning Resources](/resources/learning) page. It stays short on purpose.
   </Accordion>
 </Accordions>

@@ -3,6 +3,7 @@ import { createRootLayout } from "fumapress/layouts/root";
 import { fumadocsMdx } from "fumapress/adapters/mdx";
 import { flexsearchPlugin } from "fumapress/plugins/flexsearch";
 import { llmsPlugin } from "fumapress/plugins/llms.txt";
+import { sitemapPlugin } from "fumapress/plugins/sitemap";
 import { takumiPlugin } from "fumapress/plugins/takumi";
 import { createDocsLayoutPage } from "fumapress/layouts/docs";
 import { Mark } from "./src/components/mark";
@@ -149,6 +150,7 @@ export default defineConfig({
   .plugins(
     flexsearchPlugin(),
     llmsPlugin(),
+    sitemapPlugin(),
     takumiPlugin({
       async generate(page) {
         const boldFont = loadFontSync(

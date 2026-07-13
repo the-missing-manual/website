@@ -1,18 +1,35 @@
 ---
 title: Resources
-description: How to search effectively, evaluate resources, and use them without falling into consumption loops.
+description: How to search, evaluate, and use resources without falling into consumption loops, plus a short list of ones worth your time.
 ---
 
 import { Cards, Card } from 'fumadocs-ui/components/card';
-import { MagnifyingGlassIcon, GithubLogoIcon, ChatCircleTextIcon } from '@phosphor-icons/react/ssr';
+import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
+import { MagnifyingGlassIcon, GithubLogoIcon, ChatCircleTextIcon, CompassIcon, CurrencyInrIcon } from '@phosphor-icons/react/ssr';
 
-This section does not list specific courses, YouTube channels, or platforms. That changes too fast and depends too much on what you're building.
-
-What it covers is how to find what you need yourself, evaluate whether it's worth your time, and use it without getting stuck in consumption loops.
+Most of this section teaches a skill rather than handing you a link: how to find what you need yourself, judge whether it's worth your time, and use it without getting stuck in consumption loops. That skill outlasts any list.
 
 <Mark>The ability to find, evaluate, and use information is more durable than any specific list of resources.</Mark>
 
+<Callout type="info" title="The one exception to the no-recommendation rule">
+The rest of this guide names no specific tools, courses, or channels, on purpose. Resources is the single place it does. [Learning Resources](/resources/learning) and [Understanding Pay](/resources/compensation) point to a short list of super-credible, mostly-free sources with no affiliation to this guide. Nobody paid to be listed. Everything else on this site stays neutral.
+</Callout>
+
+### Pointers
+
 <Cards>
+  <Card
+    icon={<CompassIcon size={18} weight="duotone" />}
+    title="Learning Resources"
+    href="/resources/learning"
+    description="A short, curated list of super-credible, mostly-free resources for CS, DSA, system design, git, and going deeper."
+  />
+  <Card
+    icon={<CurrencyInrIcon size={18} weight="duotone" />}
+    title="Understanding Pay"
+    href="/resources/compensation"
+    description="Where to find real salary numbers, and how to read an offer past the headline CTC."
+  />
   <Card
     icon={<MagnifyingGlassIcon size={18} weight="duotone" />}
     title="Searching Effectively"
@@ -32,3 +49,20 @@ What it covers is how to find what you need yourself, evaluate whether it's wort
     description="How to ask technical questions in a way that gets real answers."
   />
 </Cards>
+
+### Common Questions
+
+<Accordions>
+  <Accordion title="Why does the rest of the guide avoid recommending resources, but this section doesn't?">
+    Because ranking tools and courses is where guides get captured by sponsorships and go stale. The [Learning Resources](/resources/learning) list sidesteps both: everything on it is widely respected, mostly free, and unaffiliated. It stays short for the same reason.
+  </Accordion>
+  <Accordion title="There are ten resources for every topic. How do I pick one?">
+    Pick the one you'll actually finish, then stop shopping. Switching resources every week is a way to feel busy without learning. Cross-check a couple, commit to one, and build alongside it.
+  </Accordion>
+  <Accordion title="I keep watching tutorials but not improving. What's wrong?">
+    You're consuming, not doing. A tutorial you watch without writing code is entertainment. Build the thing as you go, and see [Searching Effectively](/resources/google-search) for finding the specific answer instead of another full course.
+  </Accordion>
+  <Accordion title="How do I figure out real salary numbers for a company?">
+    Cross-check self-reported data across a few sources and convert CTC to in-hand before comparing. See [Understanding Pay](/resources/compensation).
+  </Accordion>
+</Accordions>

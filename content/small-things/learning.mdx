@@ -1,0 +1,57 @@
+---
+title: How to Learn
+description: Reading errors, debugging with a hypothesis, rubber duck, Feynman, and why recall beats re-reading.
+---
+
+Nobody teaches you how to learn. School rewards memorizing enough to pass a test, then moving on. Programming punishes that habit fast, because the thing you memorized changes and the exam that matters, an interview or a real bug, tests whether you understand, not whether you recalled.
+
+These are the techniques that carry across every topic in this guide. They cost nothing and most people never use them.
+
+<Mark>How you learn a topic decides whether you can use it under pressure or only recognize it on a slide. The gap between the two is where most interviews are lost.</Mark>
+
+### Read the whole error message
+
+The most common beginner habit is also the most expensive one: an error appears, panic sets in, they skip the message, change something at random, and rerun hoping it helps.
+
+The error message is usually telling you what is wrong and where. Read it start to finish. The top often names the problem, the bottom often names the line. Once you slow down and read every word, most errors stop being cryptic.
+
+### Search the exact error, not your feelings
+
+When the message doesn't make sense, search it, but search it right.
+
+- **Copy the exact error text** into the search box, in quotes.
+- **Strip out your own variable and file names,** which are unique to you, so the search matches other people's version of the same problem.
+- Beginners search "my code not working" and find nothing. The precise error string finds the person who already hit it.
+
+### Have a hypothesis before you touch the code
+
+Random-change debugging, editing a line and rerunning to see if it helps, feels like progress and is mostly noise. It also teaches you nothing, because when it works by accident you don't know why.
+
+- **Say what you think is wrong before you change anything.** If you can't state a guess, you're not debugging, you're guessing.
+- **Write the logic in plain words first.** Describing what the code should do, in your own language, kills half the bugs before they exist.
+- **When you're stuck past thirty minutes, walk away.** The answer often arrives on the walk, not at the desk. Grinding harder on a wall you've been staring at rarely moves it.
+
+### Explain it out loud, to anything
+
+Rubber duck debugging is exactly what it sounds like: you explain your broken code, line by line, out loud, to an object on your desk. The bug tends to reveal itself mid-sentence, because saying the logic aloud forces you to check the assumption you'd been skipping past silently.
+
+You don't need a duck. A wall works. A patient friend works. The trick is the act of explaining, not the listener.
+
+### If you can't teach it, you don't know it
+
+The Feynman technique is one question: can you explain this to someone who has never seen it, in plain words, without the jargon. If you stumble, you found the exact spot you don't actually understand, and that spot is where your interview answer will fall apart.
+
+This is why "explain it out loud after you solve it" shows up again and again in this guide. It is the same idea. Memorizing a solution and understanding it look identical until someone asks you why. See [DSA](/programming/dsa) and [Technical Interviews](/programming/interviews).
+
+### Recall beats re-reading
+
+Re-reading your notes and highlighting them feels like studying. It mostly isn't. Two techniques do more:
+
+- **Active recall.** Close the notes and try to retrieve the answer from memory. The struggle to remember is what builds the memory. Comfortable review does not.
+- **Spaced repetition.** Revisit a topic after a day, then a few days, then a week. This is why cramming DSA the week before placements evaporates by the interview, and steady practice across months sticks.
+
+### Read code you didn't write
+
+You will read far more code than you write, at every job you'll ever have, yet students spend four years writing and almost no time reading. Interviews test it too, when they hand you an unfamiliar snippet and ask what it does.
+
+Open a project you use and read how it works. Read a senior's pull request. Read a solution that is cleaner than yours and ask why it's cleaner. The skill of navigating code you didn't write is one you have to practice on purpose, because coursework never asks for it.

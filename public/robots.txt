@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://the-missing-manual.vercel.app/sitemap.xml

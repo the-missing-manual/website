@@ -1,0 +1,56 @@
+---
+title: Version Control
+description: Git and GitHub are assumed at every job and taught at almost none. What to actually learn, and the mistakes that bite students.
+---
+
+Every company expects you to know git. Almost no college teaches it. You end up learning it in a panic, on a real team, while trying not to break the shared repository, which is the worst possible time.
+
+This page is not a git tutorial. It's what git is for, what "knowing it" actually means at a baseline, and the mistakes that catch students. For learning the commands, the [Learning Resources](/resources/learning) page points to the free, canonical guides.
+
+<Mark>Learn git on a small solo project, where a mistake costs you nothing. Learning it under pressure on a team repository is how the scary reputation gets earned.</Mark>
+
+### What git actually gives you
+
+Git is version control: it records the history of your project as a series of snapshots you can move between.
+
+- **A backup with a history.** Every past version of your work is recoverable, and the copy lives on a server, not only your laptop. See [Your Setup](/small-things/setup).
+- **A safe way to experiment.** Branch off, try something, and throw it away if it fails, without touching the working version.
+- **The way teams work.** Multiple people change the same project without overwriting each other. This is the part college never simulates.
+- **A record of you.** How you commit becomes something a reviewer or interviewer reads. See [Keeping a Record](/small-things/keeping-a-record).
+
+### What "knowing git" means at a baseline
+
+You don't need to be an expert. A working baseline is a small set of things you understand rather than copy-paste each time:
+
+- Committing changes with messages that say what changed.
+- Branching, and merging a branch back.
+- Pushing to and pulling from a remote like GitHub.
+- Resolving a merge conflict without panicking.
+- Using a `.gitignore` so junk and secrets never get committed.
+- Opening a pull request and reading a diff.
+
+Understanding the model underneath, what a commit and a branch really are, is what makes these stop feeling like random incantations. That's why the guides on the resources page teach the model, not just the commands.
+
+### The mistakes that bite students
+
+<Callout type="warn">
+Never commit secrets. API keys, passwords, and `.env` files pushed to a public repository are scraped by bots within minutes, and deleting the file later does not remove it from history. Add secrets to `.gitignore` before the first commit, not after.
+</Callout>
+
+- **Committing `node_modules` or build folders.** They're huge, regenerable, and belong in `.gitignore`. A repo bloated with them looks careless.
+- **One giant commit named "final".** Small, focused commits with real messages read as care and make your history useful. See [Keeping a Record](/small-things/keeping-a-record).
+- **Copy-pasting commands you don't understand.** When one goes wrong, you can't recover, because you never knew what it did. Learn the handful of core ideas instead.
+- **Force-pushing a shared branch.** On a team, this can erase other people's work. On your own solo branch it's harmless. Know which one you're on.
+- **Treating GitHub as a folder of dead code.** A repository with no README and no commit history looks abandoned, even if the code is good.
+
+### GitHub is a public record, so treat it like one
+
+Recruiters and interviewers look at your GitHub. What they read is not a contribution-graph color.
+
+- **A few real projects beat a hundred empty ones.** Each with a README that says what it does and how to run it.
+- **Green squares are not the point.** Nobody hires on commit streaks. They open a repo, read the code and the README, and decide in thirty seconds.
+- **Pin your best work.** The default view is what a recruiter sees first. Make it your strongest few repos, not whatever you pushed last.
+
+<Callout type="info">
+This is guidance, not a tutorial. To learn git hands-on, use the free canonical resources: the Pro Git book, MIT Missing Semester's git lecture, and Learn Git Branching, all listed in [Learning Resources](/resources/learning).
+</Callout>

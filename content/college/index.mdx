@@ -4,7 +4,8 @@ description: Year by year priorities — what each phase of your program is actu
 ---
 
 import { Cards, Card } from 'fumadocs-ui/components/card';
-import { ClockCountdownIcon, RocketLaunchIcon, CalendarIcon } from '@phosphor-icons/react/ssr';
+import { Accordions, Accordion } from 'fumadocs-ui/components/accordion';
+import { ClockCountdownIcon, RocketLaunchIcon, CalendarIcon, ExamIcon } from '@phosphor-icons/react/ssr';
 
 The gap between students at the end of four years is not explained by talent. It's explained by what they did outside class, how consistently they did it, and whether they understood what each year was actually for.
 
@@ -47,4 +48,27 @@ This section is organized around where you are in time. Each phase has different
     href="/college/after-college"
     description="Placements didn't go as planned, or they did. What comes next either way."
   />
+  <Card
+    icon={<ExamIcon size={18} weight="duotone" />}
+    title="CGPA"
+    href="/college/cgpa"
+    description="How much your grades actually matter, where they matter, and the two opposite ways students get it wrong."
+  />
 </Cards>
+
+### Common Questions
+
+<Accordions>
+  <Accordion title="How much does CGPA actually matter?">
+    It works as a filter, not a ranking. Clear your target companies' cutoff with a margin, then spend your energy on skills. It matters more for higher studies. See [CGPA](/college/cgpa).
+  </Accordion>
+  <Accordion title="I wasted my first year. Is it too late?">
+    No. The timeline is a rough framework, not a rigid calendar. Start where you are with a foundation, then move. See [First Year](/college/year-1) and [Before College](/college/before-college).
+  </Accordion>
+  <Accordion title="What's the single most common way students fall behind?">
+    Optimizing for the wrong thing at the wrong time: grinding grades when they should be building, or chasing advanced topics before the basics hold. Each year has a job. See the year pages above.
+  </Accordion>
+  <Accordion title="Placements didn't go well. What now?">
+    It's recoverable, and more common than the placement-season noise suggests. See [After College](/college/after-college).
+  </Accordion>
+</Accordions>
